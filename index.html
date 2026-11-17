@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#eaf3ff"><title>GFA · CRM 소재 스튜디오</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Gothic+A1:wght@400;500;700;800;900&family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Gasoek+One&family=Noto+Serif+KR:wght@400;600;700;900&family=Nanum+Myeongjo:wght@400;700;800&family=Song+Myung&family=Nanum+Pen+Script&family=Gaegu:wght@400;700&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"><link rel="stylesheet" href="studio.css?v=pub1"></head>
+<body>
+<header class="mast"><div class="mast-inner"><a class="brand" href="#archive" aria-label="소재 아카이브 홈"><span class="brandmark" id="brandMark" aria-hidden="true"><img id="brandLogo" alt="" src="ui/eol-logo.png"><span id="brandFallback" hidden>삼</span></span><b id="headerBrand">얼김치</b></a><span class="mast-label"><i aria-hidden="true"></i> 소재 스튜디오</span></div></header>
+<main>
+<section id="archive">
+ <section class="intro" aria-labelledby="heroTitle"><p class="hero-label" id="libraryEyebrow">GFA · CRM</p><h1 id="heroTitle">소재 제작 스튜디오</h1><p id="brandIntro"></p>
+ <div class="brandbar" role="group" aria-label="브랜드 선택"><button type="button" data-brand="얼김치" aria-pressed="true">얼김치</button><button type="button" data-brand="진해진" aria-pressed="false">진해진</button><button type="button" data-brand="한국고려삼" aria-pressed="false">한국고려삼</button></div></section>
+ <section class="browse" aria-labelledby="browseTitle"><div class="section-head"><div><p class="eyebrow" id="browseKicker">ARCHIVE</p><h2 id="browseTitle">소재 라이브러리</h2></div><div id="archiveActions"><button class="link" id="shareStudio" type="button" hidden>스튜디오 링크 복사</button><button class="link" id="addSource">+ 원본 등록</button><button class="link" id="restore">시안 불러오기</button></div></div>
+ <div class="filters"><div class="pills" id="pills" role="group" aria-label="목록 필터"></div><div class="search"><label class="searchfield"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="query" type="search" aria-label="검색" placeholder="소재명·문구 검색"></label><select id="status" aria-label="운영 상태"><option value="">모든 상태</option><option value="operated">운영 확인</option><option value="approved">승인본 · 운영 미확인</option><option value="prepared">제작본 · 운영 미확인</option><option value="scene">AI 원본 · 집행본 미연결</option></select></div></div>
+ <div class="resultbar"><span id="result" role="status"></span><label id="deliveryField" hidden><span>집행 범위</span><select id="delivery" aria-label="GFA 집행 범위"></select></label></div>
+ <div class="grid" id="grid"></div><div id="empty" hidden>일치하는 항목이 없습니다.</div>
+</section>
+</section>
+<section id="editor" hidden>
+ <header class="ai-bar">
+  <button class="ai-back" id="leave" title="아카이브로 돌아가기" aria-label="아카이브로 돌아가기">←</button>
+  <div class="ai-doc"><input id="draftName" maxlength="100" aria-label="시안 이름"><small id="editCode"></small></div>
+  <div class="ai-actions"><button id="duplicate" hidden>복제</button><button id="save" hidden>저장</button><button id="exportProject" title="다른 컴퓨터에서 이어서 편집할 파일">편집 파일 ↓</button><button class="ai-primary" id="exportImage">이미지 내보내기 ↓</button></div>
+ </header>
+ <div class="ai-main">
+  <nav class="ai-tools" aria-label="도구">
+   <button class="ai-tool" id="toolSelect" aria-pressed="true" title="선택 · 이동 (요소를 끌어 이동, 모서리로 크기 조절)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v16l4.2-4.1 2.7 6 2.6-1.2-2.7-5.9H19z"/></svg></button>
+   <button class="ai-tool" data-add="title" title="문구 추가 (T)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v3h-2V7h-4v11h2v2H9v-2h2V7H7v1H5z"/></svg></button>
+   <button class="ai-tool" data-add="product" title="이미지 추가"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zm2 2v8l3.5-3.5 3 3L16 11l2 2V7zm3 2a1.5 1.5 0 1 1 0 .01z"/></svg></button>
+   <button class="ai-tool" data-add="badge" title="배지 추가"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/></svg></button>
+   <span class="ai-sep"></span>
+   <button class="ai-tool" id="resplit" hidden title="문구·제품 영역 다시 지정"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h6v2H5v4H3zm12 0h6v6h-2V5h-4zM3 15h2v4h4v2H3zm16 0h2v6h-6v-2h4z"/></svg></button>
+   <button class="ai-tool ai-ref" id="showSource" title="원본과 근거 보기"><img id="refImage" alt="원본"></button>
+  </nav>
+  <section class="ai-board" id="board"><div id="artwrap"><canvas id="art" width="1000" height="1000" aria-label="편집 중인 시안"></canvas><div id="outline" aria-hidden="true"></div><textarea id="canvasCopy" aria-label="이미지 위 문구 편집" maxlength="600" spellcheck="false" hidden></textarea></div></section>
+  <aside class="ai-dock">
+   <section class="ai-panel ai-props"><h2 class="ai-tab">속성</h2><div id="inspector"></div></section>
+   <section class="ai-panel ai-layers"><h2 class="ai-tab">레이어</h2><div id="layerList"></div><div class="ai-foot" id="layerActions"></div></section>
+  </aside>
+ </div>
+ <footer class="ai-status"><span id="screenSize"></span><span class="ai-zoom"><button id="zoomOut" aria-label="축소">−</button><output id="zoomLabel">100%</output><button id="zoomIn" aria-label="확대">+</button><button id="zoomFit">화면 맞춤</button></span><span class="ai-hint">클릭: 문구 입력 · 드래그: 이동 · 방향키: 1px 이동(Shift 10px) · Delete: 삭제</span><span class="ai-hint" id="sharedDraftNote" hidden>저장한 시안은 이 브라우저에만 남습니다 · 공유는 편집 파일로</span><span id="refTitle" hidden></span></footer>
+</section>
+</main>
+<footer><b id="footerBrand">얼김치</b> &nbsp; / &nbsp; Creative Studio <span>GFA &nbsp;·&nbsp; CRM</span></footer>
+<dialog id="detail"><form method="dialog"><button class="close" aria-label="닫기">×</button></form><div id="detailBody"></div></dialog>
+<dialog id="addDialog"><form id="addForm"><button type="button" class="close" aria-label="닫기">×</button><p class="eyebrow">ARCHIVE / INTAKE</p><h2>원본 등록</h2><p class="muted"><b id="intakeBrand">얼김치</b> 원본 이미지는 이 브라우저에 저장됩니다. 등록한 원본도 바로 편집할 수 있습니다.</p><label>소재명<input name="title" required maxlength="100"></label><div class="two"><label>채널<select name="channel"><option>GFA</option><option>CRM</option></select></label><label>상태<select name="state"><option value="prepared">제작본</option><option value="approved">승인본</option><option value="operated">운영 확인</option></select></label></div><label>근거 (운영·승인 소재는 필수)<input name="evidence"></label><label>운영·승인일 (선택)<input type="date" name="date"></label><label>원본 이미지<input type="file" name="file" required accept="image/png,image/jpeg,image/webp"></label><button class="accent">등록하고 편집하기</button></form></dialog>
+<dialog id="splitDialog" aria-labelledby="splitTitle"><h2 id="splitTitle">문구·제품 영역 지정</h2>
+<p>문구를 클릭해 바로 수정할 수 있습니다. 사각형은 드래그하고, 윤곽은 모서리를 차례로 찍은 뒤 영역 추가를 누르세요.</p>
+<div class="split-layout"><div class="split-stage"><canvas id="splitCanvas" aria-label="분리할 영역을 지정하는 원본 이미지"></canvas><textarea id="splitCopy" aria-label="선택 영역 문구 편집" maxlength="600" hidden></textarea></div><div class="split-controls">
+<label>추가할 레이어<select id="regionType"><option value="product">제품</option><option value="badge">배지</option><option value="sub">문구</option></select></label>
+<label>선택 도구<select id="regionTool"><option value="rect">사각형</option><option value="polygon">윤곽선</option></select></label>
+<button id="finishRegion">영역 추가</button><button id="undoPoint">마지막 점 취소</button>
+<div id="regionList"></div></div></div><p class="small">이동하거나 글자를 바꾸면 가려졌던 자리는 주변 색으로 채웁니다. 복잡한 배경은 편집기에서 사진으로 교체할 수 있습니다.</p>
+<div class="actions"><button id="splitCancel">취소</button><button id="splitApply" class="accent">이 영역으로 편집하기</button></div></dialog>
+<dialog id="question"><p id="questionText"></p><div class="actions"><button id="cancelQuestion">계속 편집</button><button id="acceptQuestion" class="accent">이동</button></div></dialog>
+<input id="jsonFile" type="file" accept="application/json,.json" hidden>
+<div role="status" id="toast" hidden></div><script src="library.js"></script><script src="layer-map.js"></script><script src="plates.js?v=pub1"></script><script src="studio.js?v=pub1"></script><script src="raster-layers.js?v=pub1"></script></body></html>
