@@ -89,7 +89,7 @@ function card(src,title,chip,info,fn,asset=false,perf=null){let b=B('',fn,'card'
 const INS=()=>window.STUDIO_INSIGHTS?.items||{}, insOf=id=>INS()[id]||null;
 const GRADE_SHOWN=['우수','보통','미흡'], GRADE_KEY={'우수':'top','보통':'mid','미흡':'low'};
 const nf=v=>v==null?'–':Math.round(v).toLocaleString('ko-KR'), pf=v=>v==null?'–':Number(v).toFixed(2)+'%';
-function metricLine(i){const m=i.metrics;if(!m)return '';return m.roas!=null?`CTR ${pf(m.ctr)} · 구매 ROAS ${nf(m.roas)}%`:`CTR ${pf(m.ctr)} · 클릭 ${nf(m.clicks)}`}
+function metricLine(i){const m=i.metrics;if(!m)return '';return `CTR ${pf(m.ctr)} · 클릭 ${nf(m.clicks)}`}
 // The archive is one list: archived creatives, AI artboards without a matching
 // archived image. Drafts saved by older versions stay in IndexedDB but are no longer listed.
 const stateOrder=['operated','approved','prepared','scene'];
@@ -117,7 +117,7 @@ function perfBlock(i){const box=el('section',undefined,'perfbox');const head=el(
   const rows=[['노출',m.impressions,nf],['열람',m.opens,nf],['클릭',m.clicks,nf],['CTR',m.ctr,pf],['구매 전환',m.conversions,nf],['구매 전환율',m.cvr,pf],['비용',m.cost,v=>nf(v)+'원'],['구매 전환매출',m.revenue,v=>nf(v)+'원'],['구매 ROAS',m.roas,v=>nf(v)+'%']].filter(r=>r[1]!=null).map(([k,v,f])=>[k,f(v)]);
   const g=el('div',undefined,'perfgrid');for(const [k,v] of rows){const c=el('div');c.append(el('small',k),el('strong',v));g.append(c)}box.append(g)}
  const t=i.tags,chips=el('div',undefined,'tagchips');for(const v of [t.product,t.target,...t.appeal,...t.benefit].filter(Boolean))chips.append(el('span',v));box.append(chips);
- const notes=[i.period?('기간 '+(i.period[0]===i.period[1]?i.period[0]:i.period.join(' ~ '))):null,m&&m.opens!=null?'CTR = 클릭 ÷ 열람 · CTR로만 비교':m&&m.cost!=null?'광고 관리자 구매 전환 기준(장바구니 제외) · 조회 후 전환 포함 · 등급은 CTR 위주':i.basis==='ctr_only'?'매출 자료가 부족해 CTR로만 비교':null,i.unitSize>1?`같은 발송·소재의 이미지 ${i.unitSize}장이 같은 등급`:null,i.sourceNote].filter(Boolean);
+ const notes=[i.period?('기간 '+(i.period[0]===i.period[1]?i.period[0]:i.period.join(' ~ '))):null,m&&m.opens!=null?'CTR = 클릭 ÷ 열람 · CTR로만 비교':m&&m.cost!=null?'등급은 CTR로만 비교 · 구매 수치는 광고 관리자 기준 참고값(장바구니 제외, 조회 후 전환 포함)':null,i.unitSize>1?`같은 발송·소재의 이미지 ${i.unitSize}장이 같은 등급`:null,i.sourceNote].filter(Boolean);
  if(notes.length)box.append(el('p',notes.join(' · '),'perfnote'));return box}
 function info(dl,label,v){if(v!==null&&v!==undefined&&v!==''){dl.append(el('dt',label),el('dd',typeof v==='string'?v:JSON.stringify(v)))}}
 function detail(r){let root=$('#detailBody'),cols=el('div',undefined,'detailcols'),left=el('div'),right=el('div'),dl=el('dl');let img=picture(r.original,r.title);img.className='original';left.append(img);
