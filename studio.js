@@ -19,8 +19,8 @@ function setBrand(name,writeUrl=true){
  $('#headerBrand').textContent=$('#footerBrand').textContent=$('#intakeBrand').textContent=name;
  const logo=$('#brandLogo'),fallback=$('#brandFallback'),hasLogo=['eol','jin'].includes(meta.key);logo.hidden=!hasLogo;fallback.hidden=hasLogo;fallback.textContent=meta.mark;if(hasLogo)logo.src='ui/'+meta.key+'-logo.png';else logo.removeAttribute('src');
  $('#libraryEyebrow').textContent='GFA · CRM';
- document.title=name+' · 소재 스튜디오';
- $('#brandIntro').textContent=name==='진해진'?'진해진과 구 진수성찬의 운영 소재로 새 시안을 만드세요.':name+'의 운영 소재를 골라, 다음 시안으로 만들어 보세요.';
+ document.title=name+' · 뉴픽 소재 라이브러리';
+ $('#brandIntro').textContent=name==='진해진'?'진해진과 구 진수성찬의 운영 소재와 성과를 한곳에서 확인하고, 필요하면 바로 편집하세요.':name+'의 운영 소재와 성과를 한곳에서 확인하고, 필요하면 바로 편집하세요.';
  document.querySelectorAll('[data-brand]').forEach(b=>{if(b.tagName==='BUTTON')b.setAttribute('aria-pressed',b.dataset.brand===name)});
  if(writeUrl){const u=new URL(location.href);u.searchParams.set('brand',meta.key);history.replaceState(null,'',u)}
 }
